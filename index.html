@@ -80,6 +80,56 @@
     }
 
     .nav-actions { display:flex; gap:12px; align-items:center; }
+    
+    /* Theme toggle button styles */
+    #theme-toggle {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border: 1px solid var(--border-color, #e5e7eb);
+      transition: all 0.3s ease;
+    }
+    
+    #theme-toggle:hover {
+      background: var(--hover-bg, #f3f4f6);
+    }
+    
+    /* Dark theme variables */
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #0f1724;
+      --muted: #6b7280;
+      --accent-start: #2563eb;
+      --accent-end: #60a5fa;
+      --accent: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+      --glass: rgba(255, 255, 255, 0.6);
+      --shadow: 0 8px 30px rgba(18, 25, 40, 0.06);
+      --glass-border: rgba(255,255,255,0.5);
+      --border-color: #e5e7eb;
+      --hover-bg: #f3f4f6;
+    }
+    
+    /* Dark theme styles */
+    [data-theme="dark"] {
+      --bg: #0f1724;
+      --card: #1e293b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --glass: rgba(15, 23, 36, 0.6);
+      --shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      --glass-border: rgba(30, 41, 59, 0.5);
+      --border-color: #334155;
+      --hover-bg: #1e293b;
+    }
+    
+    /* Smooth theme transition */
+    body, .card, .btn, .glass-card, .skill-category, .project-card {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
 
     .btn {
       display: inline-flex;
@@ -601,10 +651,10 @@
             <div class="skill-item">
               <div class="skill-info">
                 <span class="skill-name">Java</span>
-                <span class="skill-percent">80%</span>
+                <span class="skill-percent">85%</span>
               </div>
               <div class="skill-progress">
-                <div class="progress-bar" data-width="80%"></div>
+                <div class="progress-bar" data-width="85%"></div>
               </div>
             </div>
             <div class="skill-item">
@@ -642,15 +692,42 @@
             <div class="skill-item">
               <div class="skill-info">
                 <span class="skill-name">React</span>
-                <span class="skill-percent">70%</span>
+                <span class="skill-percent">80%</span>
               </div>
               <div class="skill-progress">
-                <div class="progress-bar" data-width="70%"></div>
+                <div class="progress-bar" data-width="80%"></div>
               </div>
             </div>
             <div class="skill-item">
               <div class="skill-info">
-                <span class="skill-name">JavaFX</span>
+                <span class="skill-name">Bootstrap</span>
+                <span class="skill-percent">85%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Tailwind CSS</span>
+                <span class="skill-percent">80%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="80%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Font Awesome</span>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">EmailJS</span>
                 <span class="skill-percent">75%</span>
               </div>
               <div class="skill-progress">
@@ -723,21 +800,14 @@
             </div>
             <div class="skill-item">
               <div class="skill-info">
-                <span class="skill-name">OOP</span>
+                <span class="skill-name">OOPS</span>
                 <span class="skill-percent">90%</span>
               </div>
               <div class="skill-progress">
                 <div class="progress-bar" data-width="90%"></div>
               </div>
             </div>
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name">Computer Networks</span>
-                <span class="skill-percent">80%</span>
-              </div>
-              <div class="skill-progress">
-                <div class="progress-bar" data-width="80%"></div>
-              </div>
+            
             </div>
           </div>
         </div>
@@ -752,78 +822,82 @@
 
         <div class="projects-grid" style="margin-top:14px">
           <article class="project">
-            <div class="img">AI Interview System</div>
-            <div class="body">
-              <h4>AI-Powered Virtual Interview System</h4>
-              <p>AI-based question analysis + response evaluation. Front-end + backend architecture design.</p>
-              <div class="links">
-                <a class="chip" href="#" onclick="openDemo(event,'https://example.com')">Live Demo</a>
-                <a class="chip" href="#" onclick="openRepo(event,'https://github.com/lalithSrini')">GitHub</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project">
-            <div class="img">NPTEL Prep</div>
+            <div class="img" style="background-image: url('https://mite.ac.in/wp-content/uploads/2020/01/nptel-mite.jpg' ); background-size: cover; background-position: center; "></div>
             <div class="body">
               <h4>NPTEL Exam Preparation Platform</h4>
-              <p>Practice questions with progress tracking and study analytics.</p>
+              <h6>React.js,Firebase, JavaScript</h6>
+              <p>A clean and easy-to-use webpage designed to help students prepare for NPTEL exams.
+It provides organized course topics and quick access to study materials.
+The site makes exam preparation simple with clear navigation and a responsive layout.</p>
               <div class="links">
-                <a class="chip" href="#">Live Demo</a>
-                <a class="chip" href="#">GitHub</a>
+                <a class="chip" href="https://lalithsrini.github.io/NPTEL/" onclick="openDemo(event,'https://lalithsrini.github.io/NPTEL/')">Live Demo</a>
+                <a class="chip" href="https://github.com/lalithSrini/Educational-Leadership" onclick="openRepo(event,'https://github.com/lalithSrini/Educational-Leadership')">GitHub</a>
               </div>
             </div>
           </article>
 
           <article class="project">
-            <div class="img">PG Booking</div>
+            <div class="img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTlGDjHON7z4XlyOSOU38mocr4k6B0Qa0D3g&s' ); background-size: cover; background-position: center; "></div>
+            
             <div class="body">
-              <h4>PG Room Booking Website</h4>
-              <p>Booking system built with HTML, CSS & JavaScript — client-side reservation and UI.</p>
+              <h4>GameX</h4>
+              <h6>React.js,Node.js, JavaScript</h6>
+              <p>Interactive educational platform for children to learn basic concepts through engaging visuals. Features dynamic
+components, smooth navigation, and responsive design.</p>
               <div class="links">
-                <a class="chip" href="#">Live Demo</a>
-                <a class="chip" href="#">GitHub</a>
+                <a class="chip" href="https://lalithsrini.github.io/kidlearn/" onclick="openDemo(event,'https://lalithsrini.github.io/kidlearn/')">Live Demo</a>
+                <a class="chip" href="https://github.com/lalithSrini/KidLearn" onclick="openRepo(event,'https://github.com/lalithSrini/KidLearn')">GitHub</a>
               </div>
             </div>
           </article>
 
           <article class="project">
-            <div class="img">Weather App</div>
+            <div class="img" style="background-image: url('https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center;"></div>
+            
             <div class="body">
-              <h4>Weather Prediction App (Python GUI)</h4>
-              <p>Desktop application that predicts weather — Python GUI project.</p>
+              <h4>Weather Forecast App</h4>
+              <h6>Python, Tkinter, OpenWeatherMap API</h6>
+              <p>Desktop application that provides real-time weather forecasts with a clean, user-friendly interface. Features include current weather conditions, 5-day forecast, and location-based weather data.</p>
               <div class="links">
-                <a class="chip" href="#">Details</a>
+                <a class="chip" href="https://github.com/lalithSrini/weather-forecast-application" onclick="openRepo(event,'https://github.com/lalithSrini/weather-forecast-application')">GitHub</a>
               </div>
             </div>
           </article>
 
           <article class="project">
-            <div class="img">Drone AIML</div>
+            <div class="img" style="background-image: url('https://thumbs.dreamstime.com/b/currency-converter-seal-imprint-distress-style-blue-vector-rubber-print-currency-converter-text-scratched-texture-132109112.jpg' ); background-size: cover; background-position: center; "></div>
+            
             <div class="body">
-              <h4>Integrated AIML & Drone Platform</h4>
-              <p>Mobile platform for pest & plant-health monitoring and farmer connectivity.</p>
+              <h4>Currency Converter</h4>
+              <h6>HTML, CSS, JavaScript</h6>
+              <p>Real-time currency conversion with instant result updates and responsive layout.</p>
               <div class="links">
-                <a class="chip" href="#">Case Study</a>
+                <a class="chip" href="https://lalithsrini.github.io/currency/" onclick="openDemo(event,'https://lalithsrini.github.io/currency/')">Live Demo</a>
+                <a class="chip" href="https://github.com/lalithSrini/currency" onclick="openRepo(event,'https://github.com/lalithSrini/currency')">GitHub</a>
               </div>
             </div>
           </article>
 
           <article class="project">
-            <div class="img">E-Commerce API</div>
+            <div class="img" style="background-image: url('https://play-lh.googleusercontent.com/fxwu7Jz-v4gPDiAW5rPXiwxhj8MOQn9HTE9u614O-dfjO328Uo_qlnaEysmxurz-zMA' ); background-size: cover; background-position: center; "></div>
+            
             <div class="body">
-              <h4>E-Commerce RESTful API</h4>
-              <p>Backend API for CRUD operations, authentication, and scalable design.</p>
+              <h4>Puzzle Game</h4>
+              <h6>HTML, CSS, JavaScript</h6>
+              <p>Interactive puzzle game with responsive design and smooth animations.</p>
               <div class="links">
-                <a class="chip" href="#">API Docs</a>
-                <a class="chip" href="#">GitHub</a>
+                <a class="chip" href="https://lalithsrini.github.io/PUZZLE-GAME/" onclick="openDemo(event,'https://lalithsrini.github.io/PUZZLE-GAME/')">Live Demo</a>
+                <a class="chip" href="https://github.com/lalithSrini/PUZZLE-GAME" onclick="openRepo(event,'https://github.com/lalithSrini/PUZZLE-GAME')">GitHub</a>
               </div>
             </div>
           </article>
+
+          
+          
         </div>
       </div>
     </section>
-
+<br>
     <!-- RESUME -->
     <section id="resume" class="card fade-in">
       <h3>Resume</h3>
@@ -834,9 +908,10 @@
           target="_blank" rel="noopener">View Resume (Google Drive)</a>
       </div>
     </section>
-
+<br>
     <!-- NEW GLASSMORPH CONTACT SECTION -->
     <section id="contact-section" class="card fade-in">
+      <h2>Contact</h2>
       <div class="glass-contact-wrapper">
         <!-- left: form -->
         <div class="glass-card">
@@ -1062,6 +1137,43 @@
       });
     })();
 
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const lightIcon = document.querySelector('.light-icon');
+    const darkIcon = document.querySelector('.dark-icon');
+    
+    // Check for saved theme preference or use system preference
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+    
+    // Apply the saved theme
+    if (currentTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      lightIcon.style.display = 'none';
+      darkIcon.style.display = 'inline';
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      lightIcon.style.display = 'inline';
+      darkIcon.style.display = 'none';
+    }
+    
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        lightIcon.style.display = 'inline';
+        darkIcon.style.display = 'none';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        lightIcon.style.display = 'none';
+        darkIcon.style.display = 'inline';
+      }
+    });
+    
     /* small load animations */
     window.addEventListener('load', () => {
       document.querySelectorAll('.fade-in').forEach((el, i) => el.style.animationDelay = (i * 80) + 'ms');
