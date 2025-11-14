@@ -1,0 +1,1120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thotamsetty Lalith Srinivas — Full Stack Web Developer</title>
+
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <meta name="description" content="Thotamsetty Lalith Srinivas — Full Stack Web Developer | Portfolio" />
+
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #0f1724;
+      --muted: #6b7280;
+      --accent-start: #2563eb;
+      --accent-end: #60a5fa;
+      --accent: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+      --glass: rgba(255, 255, 255, 0.6);
+      --shadow: 0 8px 30px rgba(18, 25, 40, 0.06);
+      --glass-border: rgba(255,255,255,0.5);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1220;
+      --card: rgba(6,11,30,0.75);
+      --text: #e6eef8;
+      --muted: #9aa6b2;
+      --accent-start: #1e3a8a;
+      --accent-end: #60a5fa;
+      --accent: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+      --glass: rgba(255, 255, 255, 0.04);
+      --shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+      --glass-border: rgba(255,255,255,0.06);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.4;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: white;
+      background: var(--accent);
+      box-shadow: var(--shadow);
+    }
+
+    .nav-actions { display:flex; gap:12px; align-items:center; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: var(--card);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 16px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+      box-sizing: border-box;
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+
+    .btn-primary { background: linear-gradient(90deg, var(--accent-start), var(--accent-end)); color: white; padding: 10px 16px; border-radius: 12px; border: none; }
+
+    .hero { display:grid; grid-template-columns: 1fr 360px; gap:28px; align-items:center; }
+
+    .hero-card { background: var(--card); border-radius: 16px; padding: 28px; box-shadow: var(--shadow); }
+
+    .profile-photo { width: 100%; height: 100%; border-radius: 12px; background: linear-gradient(135deg, #e0f2fe, #bfdbfe); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:18px; }
+
+    .card { background: var(--card); padding: 22px; border-radius: 14px; box-shadow: var(--shadow); }
+
+    .section-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px }
+
+    .chip { padding: 8px 10px; background: transparent; border-radius: 10px; border: 1px solid rgba(0,0,0,0.06); font-size: 13px }
+
+    /* Projects */
+    .projects-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:16px; }
+
+    .project .img { height:140px; background: linear-gradient(135deg,#e6eefc,#dbeafe); display:flex; align-items:center; justify-content:center; font-weight:600; }
+
+    /* Contact (new glassmorphism section) */
+    .glass-contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 32px;
+      align-items: start;
+      margin-top: 18px;
+    }
+
+    .glass-card {
+      border-radius: 14px;
+      padding: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.28));
+      backdrop-filter: blur(8px) saturate(120%);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 6px 30px rgba(14,20,35,0.06);
+    }
+
+    [data-theme="dark"] .glass-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    }
+
+    .glass-contact-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .glass-contact-header h3 { margin:0; }
+    .glass-contact-header p { margin:0; color:var(--muted); font-size:13px; }
+
+    /* Floating form styles */
+    .glass-form {
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .g-form-group {
+      position:relative;
+      padding-top:6px;
+    }
+
+    .g-form-group input,
+    .g-form-group textarea {
+      width:100%;
+      padding:14px 12px 8px 12px;
+      font-size:15px;
+      color:var(--text);
+      background: transparent;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.06);
+      outline:none;
+      transition: all 0.18s ease;
+      resize: vertical;
+      box-shadow: none;
+    }
+
+    .g-form-group textarea { min-height:120px; line-height:1.6; }
+
+    .g-form-group input:focus,
+    .g-form-group textarea:focus {
+      transform: translateY(-2px);
+      border-color: rgba(37,99,235,0.9);
+      box-shadow: 0 6px 20px rgba(37,99,235,0.06);
+    }
+
+    .g-label {
+      position:absolute;
+      left:12px;
+      top:12px;
+      font-size:13px;
+      color:var(--muted);
+      pointer-events:none;
+      transition: all 0.18s ease;
+      background: transparent;
+      padding: 0 6px;
+    }
+
+    .g-form-group input:focus + .g-label,
+    .g-form-group input:not(:placeholder-shown) + .g-label,
+    .g-form-group textarea:focus + .g-label,
+    .g-form-group textarea:not(:placeholder-shown) + .g-label {
+      top:-8px;
+      font-size:12px;
+      color: var(--accent-start);
+      background: transparent;
+      transform: translateY(0);
+    }
+
+    /* underline effect */
+    .g-underline {
+      height:3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+      border-radius: 999px;
+      transition: width 0.35s cubic-bezier(.2,.9,.3,1);
+      margin-top:6px;
+    }
+
+    .g-form-group input:focus ~ .g-underline,
+    .g-form-group textarea:focus ~ .g-underline {
+      width:100%;
+    }
+
+    .glass-submit {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 18px;
+      border-radius:10px;
+      border:none;
+      cursor:pointer;
+      background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+      color:white;
+      font-weight:600;
+      transition: transform 0.18s ease;
+    }
+
+    .glass-submit:active { transform: translateY(1px); }
+
+    /* right column contact info */
+    .right-contact {
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .contact-surface {
+      padding:18px;
+      border-radius:12px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border:1px solid var(--glass-border);
+    }
+
+    .contact-surface h4 { margin:0 0 6px 0; color:var(--text); }
+    .info-item { display:flex; align-items:center; gap:12px; color:var(--text); text-decoration:none; }
+    .icon-circle { width:44px; height:44px; border-radius:999px; background: rgba(255,255,255,0.12); display:grid; place-items:center; }
+
+    .social-row { display:flex; gap:10px; margin-top:8px; }
+
+    .form-status {
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:10px;
+      font-size:14px;
+      display:none;
+    }
+
+    .form-status.show { display:block; }
+
+    .form-status.success { background: rgba(34,197,94,0.08); color:#065f46; border:1px solid rgba(34,197,94,0.12); }
+    .form-status.error { background: rgba(239,68,68,0.06); color:#991b1b; border:1px solid rgba(239,68,68,0.08); }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .skill-category {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--glass-border);
+    }
+
+    .skill-category h4 {
+      margin: 0 0 12px 0;
+      color: var(--text);
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      background: var(--glass);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.9em;
+      border: 1px solid var(--glass-border);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .skill-tag i {
+      width: 20px;
+      text-align: center;
+      color: var(--accent-start);
+    }
+
+    .skill-tag .skill-name {
+      flex-grow: 1;
+    }
+
+    .skill-tag .skill-level {
+      font-size: 0.8em;
+      opacity: 0.8;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background: rgba(0,0,0,0.1);
+      border-radius: 3px;
+      margin-top: 6px;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+      transition: width 1s ease-in-out;
+    }
+
+    .skill-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 1024px) {
+      .glass-contact-wrapper { grid-template-columns: 1fr; }
+      .hero { 
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .profile-photo { 
+        height: auto;
+        max-width: 500px;
+        margin: 0 auto;
+        width: 100%;
+      }
+      .profile-content {
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .profile-image-container {
+        max-width: 180px !important;
+      }
+      .profile-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .profile-image-container {
+        max-width: 150px !important;
+      }
+      .profile-name {
+        font-size: 1.5rem !important;
+      }
+      .profile-title {
+        font-size: 0.9rem !important;
+      }
+    }
+
+    /* subtle enter animations */
+    /* Skills Section Styling */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .skill-category {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .skill-category h4 {
+      margin: 0 0 1.5rem 0;
+      color: var(--text);
+      font-size: 1.1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-category h4 i {
+      color: #3dbcd5; /* Teal accent color */
+    }
+
+    .skill-item {
+      margin-bottom: 1.25rem;
+    }
+
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .skill-name {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .skill-percent {
+      background-color: #455c82;
+      color: white;
+      padding: 0.2rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .skill-progress {
+      height: 8px;
+      background-color: #e5e7eb;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(360deg, #0d9488, #b81414);
+      border-radius: 40px;
+      position: relative;
+      transition: width 2s ease-in-out;
+    }
+
+    .progress-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      animation: shine 2s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* Animation for progress bars */
+    @keyframes progressAnimation {
+      from { width: 0; }
+      to { width: var(--progress-width); }
+    }
+
+    .fade-in { opacity:0; transform:translateY(8px); animation: enter .6s forwards; }
+    @keyframes enter { to { opacity:1; transform:none; } }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="app">
+
+    <header>
+      <div class="brand">
+        <div class="avatar">TLS</div>
+        <div>
+          <div style="font-weight:600">Thotamsetty Lalith Srinivas</div>
+          <div class="small muted">Full Stack Web Developer</div>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn" id="theme-toggle" title="Toggle dark/light" aria-label="Toggle dark/light mode">
+          <span class="light-icon">☀️</span>
+          <span class="dark-icon" style="display:none">🌙</span>
+        </button>
+        <a class="btn btn-primary" href="#contact-section">Contact</a>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <main class="hero">
+      <div class="hero-card card fade-in">
+        <h1>Hi, I’m Thotamsetty Lalith Srinivas — Full Stack Web Developer</h1>
+        <p class="lead">BTech CSE (2022–2026) · Building practical web apps with HTML, CSS & JavaScript. Learning MERN
+          stack and focused on hands-on projects.</p>
+
+        <div class="section-grid">
+          <div>
+            <h3>About</h3>
+            <p class="muted small">I’m a developer who enjoys building end-to-end solutions — from front-end layouts to
+              back-end APIs. I focus on clean code, accessible UI, and continuous learning.</p>
+            <div class="chip" style="margin-top:10px">Education: BTech (CSE) — 2022–2026</div>
+          </div>
+
+          <div>
+            <h3>Quick Stats</h3>
+            <div class="small muted">Skills: Python, Java, JavaScript, HTML, CSS</div>
+            <div class="small muted" style="margin-top:6px">Tools: Firebase, MySQL, Git, GitHub</div>
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <a class="chip" href="#projects">Projects</a>
+              <a class="chip" href="https://drive.google.com/file/d/1M8hGJA3yseEEuVdZtLhpCKWMon9HslwJ/view?usp=sharing"
+                target="_blank" rel="noopener">Resume</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:12px">
+          <a class="btn-primary" href="#projects">See Projects</a>
+          <a class="btn" href="tel:8978665141"
+            onclick="navigator.clipboard.writeText('8978665141'); this.setAttribute('data-original', this.textContent); this.textContent = 'Copied: 8978665141'; setTimeout(() => { this.textContent = this.getAttribute('data-original'); }, 2000); return false;">Hire
+            / Contact</a>
+        </div>
+      </div>
+<!-- Profile Pic -->
+      <aside class="profile-photo card fade-in" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem;width:100%;box-sizing:border-box">
+        <div class="profile-content" style="display:flex;flex-direction:column;align-items:center;width:100%;max-width:300px;margin:0 auto">
+         
+          <div class="profile-image-container" style="width:100%;max-width:200px;aspect-ratio:1;border-radius:50%;overflow:hidden;border:2px solid var(--accent-start);margin-bottom:1.5rem">
+            <img 
+              src="\oic.jpg" 
+              alt="Profile Picture" 
+              class="profile-pic fade-in" 
+              style="width:100%;height:100%;object-fit:fill;display:block"
+              loading="lazy"
+            >
+          </div>
+
+           <h1 class="profile-name" style="font-size:clamp(1.5rem, 4vw, 2rem);font-weight:600;text-align:center;margin:0 0 0.5rem 0;color:var(--text)">Thotamsetty Lalith Srinivas</h1>
+          <p class="profile-title" style="font-size:clamp(0.875rem, 2.5vw, 1rem);color:var(--muted);text-align:center;margin:0 0 1.25rem 0">Full Stack Web Developer</p>
+          
+
+          <div class="profile-buttons" style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;width:100%">
+            <!-- Social media or action buttons can go here -->
+          </div>
+      </aside>
+    </main>
+<br>
+    <!-- Skills -->
+    <section id="skills">
+      <div class="card fade-in">
+        <h3>🔧 Technical Skills</h3>
+        <p class="muted small">Technologies and concepts I've worked with throughout my journey.</p>
+        
+        <div class="skills-container">
+          <!-- Languages -->
+          <div class="skill-category">
+            <h4><i class="fas fa-code"></i> Languages</h4>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Python</span>
+                <span class="skill-percent">85%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Java</span>
+                <span class="skill-percent">80%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="80%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">JavaScript</span>
+                <span class="skill-percent">75%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="75%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">HTML5</span>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">CSS3</span>
+                <span class="skill-percent">85%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="85%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frameworks & Libraries -->
+          <div class="skill-category">
+            <h4><i class="fas fa-cubes"></i> Frameworks & Libraries</h4>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">React</span>
+                <span class="skill-percent">70%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="70%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">JavaFX</span>
+                <span class="skill-percent">75%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="75%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools & Platforms -->
+          <div class="skill-category">
+            <h4><i class="fas fa-tools"></i> Tools & Platforms</h4>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Firebase</span>
+                <span class="skill-percent">70%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="70%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">MySQL</span>
+                <span class="skill-percent">75%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="75%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Git</span>
+                <span class="skill-percent">80%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="80%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">GitHub</span>
+                <span class="skill-percent">85%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="85%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Concepts -->
+          <div class="skill-category">
+            <h4><i class="fas fa-lightbulb"></i> Concepts</h4>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">RESTful APIs</span>
+                <span class="skill-percent">85%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">DOM Manipulation</span>
+                <span class="skill-percent">85%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">OOP</span>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Computer Networks</span>
+                <span class="skill-percent">80%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar" data-width="80%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<br>
+    <section id="projects">
+      <div class="card fade-in">
+        <h3>📝 Projects</h3>
+        <p class="muted small">A selection of projects demonstrating both front-end and back-end work. Click live demo
+          or repo to explore.</p>
+
+        <div class="projects-grid" style="margin-top:14px">
+          <article class="project">
+            <div class="img">AI Interview System</div>
+            <div class="body">
+              <h4>AI-Powered Virtual Interview System</h4>
+              <p>AI-based question analysis + response evaluation. Front-end + backend architecture design.</p>
+              <div class="links">
+                <a class="chip" href="#" onclick="openDemo(event,'https://example.com')">Live Demo</a>
+                <a class="chip" href="#" onclick="openRepo(event,'https://github.com/lalithSrini')">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="img">NPTEL Prep</div>
+            <div class="body">
+              <h4>NPTEL Exam Preparation Platform</h4>
+              <p>Practice questions with progress tracking and study analytics.</p>
+              <div class="links">
+                <a class="chip" href="#">Live Demo</a>
+                <a class="chip" href="#">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="img">PG Booking</div>
+            <div class="body">
+              <h4>PG Room Booking Website</h4>
+              <p>Booking system built with HTML, CSS & JavaScript — client-side reservation and UI.</p>
+              <div class="links">
+                <a class="chip" href="#">Live Demo</a>
+                <a class="chip" href="#">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="img">Weather App</div>
+            <div class="body">
+              <h4>Weather Prediction App (Python GUI)</h4>
+              <p>Desktop application that predicts weather — Python GUI project.</p>
+              <div class="links">
+                <a class="chip" href="#">Details</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="img">Drone AIML</div>
+            <div class="body">
+              <h4>Integrated AIML & Drone Platform</h4>
+              <p>Mobile platform for pest & plant-health monitoring and farmer connectivity.</p>
+              <div class="links">
+                <a class="chip" href="#">Case Study</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="img">E-Commerce API</div>
+            <div class="body">
+              <h4>E-Commerce RESTful API</h4>
+              <p>Backend API for CRUD operations, authentication, and scalable design.</p>
+              <div class="links">
+                <a class="chip" href="#">API Docs</a>
+                <a class="chip" href="#">GitHub</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME -->
+    <section id="resume" class="card fade-in">
+      <h3>Resume</h3>
+      <p class="muted small">Download my resume or view it online. Replace <code>resume.pdf</code> with your actual file
+        in the same folder.</p>
+      <div class="download" style="margin-top:12px">
+        <a class="btn-primary" href="https://drive.google.com/file/d/1M8hGJA3yseEEuVdZtLhpCKWMon9HslwJ/view?usp=sharing"
+          target="_blank" rel="noopener">View Resume (Google Drive)</a>
+      </div>
+    </section>
+
+    <!-- NEW GLASSMORPH CONTACT SECTION -->
+    <section id="contact-section" class="card fade-in">
+      <div class="glass-contact-wrapper">
+        <!-- left: form -->
+        <div class="glass-card">
+          <div class="glass-contact-header">
+            <div>
+              <h3>Get in touch</h3>
+              <p class="muted small">Open to internships, collaboration, and freelance projects — drop me a message.</p>
+            </div>
+            <!-- <div style="font-size:14px; color:var(--muted)">Response time: Usually 1–3 business days</div> -->
+          </div>
+
+          <form id="contactForm" class="glass-form" novalidate>
+            <div class="g-form-group">
+              <input type="text" id="cf-name" name="name" placeholder=" " required autocomplete="name" />
+              <label class="g-label" for="cf-name">Your name</label>
+              <div class="g-underline"></div>
+            </div>
+
+            <div class="g-form-group">
+              <input type="email" id="cf-email" name="email" placeholder=" " required autocomplete="email" />
+              <label class="g-label" for="cf-email">Your email</label>
+              <div class="g-underline"></div>
+            </div>
+
+            <div class="g-form-group">
+              <input type="text" id="cf-subject" name="subject" placeholder=" " autocomplete="off" />
+              <label class="g-label" for="cf-subject">Subject (optional)</label>
+              <div class="g-underline"></div>
+            </div>
+
+            <div class="g-form-group">
+              <textarea id="cf-message" name="message" placeholder=" " required></textarea>
+              <label class="g-label" for="cf-message">Message</label>
+              <div class="g-underline"></div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:12px; margin-top:4px;">
+              <button type="submit" id="cf-submit" class="glass-submit" aria-live="polite">
+                <span id="cf-btn-text">Send Message</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="opacity:0.95; margin-left:4px;">
+                  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <button type="button" id="cf-sample" class="btn" title="Fill sample">Fill sample</button>
+            </div>
+
+            <div id="cf-status" class="form-status" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <!-- right: contact info -->
+        <aside class="right-contact">
+          <div class="contact-surface">
+            <h4>Alternative ways</h4>
+            <p class="muted small">Prefer email or phone? Use the links below.</p>
+
+            <div style="margin-top:12px;">
+              <a class="info-item" href="mailto:lalithsrinivas.t@gmail.com">
+                <div class="icon-circle">📧</div>
+                <div>
+                  <div style="font-weight:600">lalithsrinivas.t@gmail.com</div>
+                  <div class="small muted">Email me</div>
+                </div>
+              </a>
+            </div>
+
+            <div style="margin-top:12px;">
+              <a class="info-item" href="tel:+918978665141">
+                <div class="icon-circle">📞</div>
+                <div>
+                  <div style="font-weight:600">+91 8978665141</div>
+                  <div class="small muted">Call or WhatsApp</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="social-row">
+              <a class="chip" href="https://www.linkedin.com/in/lalith-srinivas/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a class="chip" href="https://github.com/lalithSrini" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a class="chip" href="https://www.instagram.com/tls_lalithsrinivas_/?next=%2F&hl=en" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+          </div>
+
+          <div class="contact-surface">
+            <h4>Quick tips</h4>
+            <ul style="margin:8px 0 0 18px; padding:0; color:var(--muted)">
+              <li>Include the role or project name in the subject.</li>
+              <li>Mention preferred timelines and budget (if any).</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer style="margin-top:18px" class="fade-in">
+      <div class="small muted">© Thotamsetty Lalith Srinivas — Full Stack Web Developer</div>
+    </footer>
+
+  </div>
+
+  <script>
+    /* Theme toggle */
+    (function () {
+      const themeToggle = document.getElementById('theme-toggle');
+      const lightIcon = themeToggle.querySelector('.light-icon');
+      const darkIcon = themeToggle.querySelector('.dark-icon');
+      
+      // Check for saved theme preference or use system preference
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      // Apply theme
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        lightIcon.style.display = 'inline';
+        darkIcon.style.display = 'none';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        lightIcon.style.display = 'none';
+        darkIcon.style.display = 'inline';
+      }
+      
+      // Toggle theme on button click
+      themeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.hasAttribute('data-theme');
+        
+        if (isDark) {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'light');
+          lightIcon.style.display = 'none';
+          darkIcon.style.display = 'inline';
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+          lightIcon.style.display = 'inline';
+          darkIcon.style.display = 'none';
+        }
+      });
+    })();
+
+    /* Animate skills progress bars when they come into view */
+    document.addEventListener('DOMContentLoaded', function() {
+      const progressBars = document.querySelectorAll('.progress-bar');
+      
+      // Function to animate progress bars
+      function animateProgressBars() {
+        progressBars.forEach(bar => {
+          const width = bar.getAttribute('data-width');
+          if (isElementInViewport(bar) && !bar.classList.contains('animated')) {
+            bar.style.width = width;
+            bar.classList.add('animated');
+          }
+        });
+      }
+      
+      // Check if element is in viewport
+      function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+      }
+      
+      // Run on load and scroll
+      animateProgressBars();
+      window.addEventListener('scroll', animateProgressBars);
+      
+      // Also run on resize in case layout changes
+      window.addEventListener('resize', animateProgressBars);
+    });
+
+    /* small helpers for demo links */
+    function openDemo(ev, url) { ev.preventDefault(); window.open(url, '_blank'); }
+    function openRepo(ev, url) { ev.preventDefault(); window.open(url, '_blank'); }
+
+    /* EmailJS and contact form behavior */
+    (function () {
+      // Initialize EmailJS
+      try {
+        emailjs.init('7T_s2OmJPBYRHg65d');
+      } catch (e) {
+        // ignore if already initialized
+        console.warn('EmailJS init error (ignored):', e);
+      }
+
+      const form = document.getElementById('contactForm');
+      const btn = document.getElementById('cf-submit');
+      const btnText = document.getElementById('cf-btn-text');
+      const statusBox = document.getElementById('cf-status');
+      const sampleBtn = document.getElementById('cf-sample');
+
+      // fill sample
+      sampleBtn.addEventListener('click', () => {
+        document.getElementById('cf-name').value = 'TLS';
+        document.getElementById('cf-email').value = 'tls@example.com';
+        document.getElementById('cf-subject').value = 'Internship Opportunity';
+        document.getElementById('cf-message').value = 'Hello Lalith, I would like to collaborate with you on a project.';
+        // trigger label move (for browsers that don't detect :placeholder-shown)
+        ['cf-name','cf-email','cf-subject','cf-message'].forEach(id => {
+          const el = document.getElementById(id);
+          el.dispatchEvent(new Event('input', { bubbles: true }));
+        });
+      });
+
+      // client-side validation helper
+      function isValidEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      }
+
+      function showStatus(type, text) {
+        statusBox.className = 'form-status show ' + (type === 'success' ? 'success' : 'error');
+        statusBox.textContent = text;
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // read values
+        const name = (document.getElementById('cf-name').value || '').trim();
+        const email = (document.getElementById('cf-email').value || '').trim();
+        const subject = (document.getElementById('cf-subject').value || '').trim() || 'Portfolio Message';
+        const message = (document.getElementById('cf-message').value || '').trim();
+
+        // basic validation
+        if (!name) { showStatus('error', 'Please enter your name.'); return; }
+        if (!email || !isValidEmail(email)) { showStatus('error', 'Please enter a valid email address.'); return; }
+        if (!message || message.length < 6) { showStatus('error', 'Please write a message (6+ characters).'); return; }
+
+        // set UI loading
+        btn.disabled = true;
+        btnText.textContent = 'Sending…';
+        statusBox.className = 'form-status'; // hide
+
+        const templateParams = {
+          from_name: name,
+          from_email: email,
+          subject: subject,
+          message: message
+        };
+
+        // send with EmailJS (service_0123tls + template_268e466)
+        emailjs.send('service_0123tls', 'template_268e466', templateParams)
+          .then(function (resp) {
+            showStatus('success', 'Message sent successfully! I will reply soon.');
+            btn.disabled = false;
+            btnText.textContent = 'Send Message';
+            form.reset();
+          }, function (err) {
+            console.error('EmailJS error:', err);
+            showStatus('error', 'Failed to send message. Please try again later or email directly.');
+            btn.disabled = false;
+            btnText.textContent = 'Send Message';
+          });
+      });
+    })();
+
+    /* small load animations */
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.fade-in').forEach((el, i) => el.style.animationDelay = (i * 80) + 'ms');
+    });
+  </script>
+</body>
+
+</html>
