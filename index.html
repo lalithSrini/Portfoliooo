@@ -31,19 +31,6 @@
       --glass-border: rgba(255,255,255,0.5);
     }
 
-    [data-theme="dark"] {
-      --bg: #0b1220;
-      --card: rgba(6,11,30,0.75);
-      --text: #e6eef8;
-      --muted: #9aa6b2;
-      --accent-start: #1e3a8a;
-      --accent-end: #60a5fa;
-      --accent: linear-gradient(135deg, var(--accent-start), var(--accent-end));
-      --glass: rgba(255, 255, 255, 0.04);
-      --shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
-      --glass-border: rgba(255,255,255,0.06);
-    }
-
     * { box-sizing: border-box; }
 
     html, body { height: 100%; }
@@ -952,44 +939,9 @@
   </div>
 
   <script>
-    /* Theme toggle */
-    (function () {
-      const themeToggle = document.getElementById('theme-toggle');
-      const lightIcon = themeToggle.querySelector('.light-icon');
-      const darkIcon = themeToggle.querySelector('.dark-icon');
-      
-      // Check for saved theme preference or use system preference
-      const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      
-      // Apply theme
-      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        lightIcon.style.display = 'inline';
-        darkIcon.style.display = 'none';
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-        lightIcon.style.display = 'none';
-        darkIcon.style.display = 'inline';
-      }
-      
-      // Toggle theme on button click
-      themeToggle.addEventListener('click', () => {
-        const isDark = document.documentElement.hasAttribute('data-theme');
-        
-        if (isDark) {
-          document.documentElement.removeAttribute('data-theme');
-          localStorage.setItem('theme', 'light');
-          lightIcon.style.display = 'none';
-          darkIcon.style.display = 'inline';
-        } else {
-          document.documentElement.setAttribute('data-theme', 'dark');
-          localStorage.setItem('theme', 'dark');
-          lightIcon.style.display = 'inline';
-          darkIcon.style.display = 'none';
-        }
-      });
-    })();
+    // Theme is set to light by default
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'light');
 
     /* Animate skills progress bars when they come into view */
     document.addEventListener('DOMContentLoaded', function() {
